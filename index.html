@@ -236,6 +236,14 @@ function generate(){
     document.getElementById('reset').addEventListener('click', resetAll);
     goalEl.addEventListener('change', ()=>{ goalText.textContent=goalEl.value; });
 
+    // ✅ Spacebar support to trigger Generate Next
+    document.addEventListener('keydown', (e) => {
+      if(e.code === 'Space' && !document.getElementById('generate').disabled){
+        e.preventDefault();
+        generate();
+      }
+    });
+
     resetAll();
   </script>
 </body>
